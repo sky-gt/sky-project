@@ -417,10 +417,10 @@ export default {
                 url: "/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code",
                 timeout: 10000,
                 success: function(data) {
-
+                   console.log('success',data)
                 },
-                error: function() {
-
+                error: function(xhr) {
+                     console.log('error',xhr)
                 }
             });
         }
