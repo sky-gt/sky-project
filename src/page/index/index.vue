@@ -394,6 +394,7 @@
 
 <script>
 
+    import Util from '@/common/util'
 
 export default {
     data(){
@@ -410,11 +411,25 @@ export default {
     computed:{
        
     },
-
     methods:{
-        
+        loadData() {
+            Util.ajax({
+                url: "/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code",
+                timeout: 10000,
+                success: function(data) {
+                   console.log('success',data)
+                },
+                error: function(xhr) {
+                     console.log('error',xhr)
+                }
+            });
+        }
     },
+    created() {
+        console.log(Util)
+        this.loadData()
+    }
 }
 
 </script>
-<style lang="css" src="../style/css/index.css"></style>  
+<style lang="css" src="../../style/css/index.css"></style>
